@@ -2,9 +2,9 @@
 
 ## Modules
 
-| Name                 | Description                                                  |
-|----------------------|--------------------------------------------------------------|
-| terraform-s3-backend | Provisions AWS resources needed for handling terraform state |
+| Name           | Description                                                  |
+|----------------|--------------------------------------------------------------|
+| aws-s3-backend | Provisions AWS resources needed for handling terraform state |
 
 ## Dev snippets
 
