@@ -2,9 +2,10 @@
 
 ## Modules
 
-| Name           | Description                                                  |
-|----------------|--------------------------------------------------------------|
-| aws-s3-backend | Provisions AWS resources needed for handling terraform state |
+| Name              | Description                                                  |
+|-------------------|--------------------------------------------------------------|
+| aws-s3-backend    | Provisions AWS resources needed for handling terraform state |
+| aws-app-bootstrap | Provisions AWS resources for an app and enables Github OIDC  |
 
 ## Dev snippets
 
