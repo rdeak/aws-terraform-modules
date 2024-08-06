@@ -1,14 +1,10 @@
-locals {
-  aws_region = "us-east-1"
-}
-
 provider "aws" {
-  region = local.aws_region
+  region = "us-east-1"
 }
 
-module "app" {
+module "bootstrap_app" {
   source            = "../../modules/aws-app-bootstrap"
-  github_repository = "rdeak/match-broadcast-sse"
-  aws_account_id    = "123456789012"
-  aws_region        = local.aws_region
+  github_repository = "user/my-repo"
+  aws_account_id    = "1234597890"
+  aws_region        = "us-east-1"
 }
