@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create release
+        uses: rdeak/semantic-release-action@v1
+        id: release-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Tag major release
+        if: ${{ steps.release-version.outputs.new_release_created }}
+        shell: bash
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git tag -f "v${{ steps.release-version.outputs.release_major_version }}" 
+          git push --force origin "v${{ steps.release-version.outputs.release_major_version }}"
+      - name: Release summary
+        shell: bash
+        run: |
+          echo "### Outputs" >> $GITHUB_STEP_SUMMARY
+          echo "| Name | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "| ----------- | ----- |" >> $GITHUB_STEP_SUMMARY
+          echo "| new_release_created | ${{ steps.release-version.outputs.new_release_created }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| release_version | ${{ steps.release-version.outputs.release_version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| release_major_version | ${{ steps.release-version.outputs.release_major_version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| release_tag | ${{ steps.release-version.outputs.release_tag }} |" >> $GITHUB_STEP_SUMMARY
+          echo  >> $GITHUB_STEP_SUMMARY
+          echo "### Environment variables" >> $GITHUB_STEP_SUMMARY
+          echo "| Name | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "| ----------- | ----- |" >> $GITHUB_STEP_SUMMARY
+          echo "| NEW_RELEASE_CREATED | ${{ env.NEW_RELEASE_CREATED }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| RELEASE_VERSION | ${{ env.RELEASE_VERSION }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| RELEASE_MAJOR_VERSION | ${{ env.RELEASE_MAJOR_VERSION }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| RELEASE_TAG | ${{ env.RELEASE_TAG }} |" >> $GITHUB_STEP_SUMMARY
