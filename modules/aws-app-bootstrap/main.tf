@@ -12,10 +12,6 @@ resource "aws_ecr_repository" "main" {
     scan_on_push = false
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   tags = {
     Name = local.repo_id
   }
@@ -47,6 +43,7 @@ resource "aws_iam_role" "github_actions_role" {
 }
 
 resource "aws_iam_role_policy" "github_actions_policy" {
+  name = local.repo_id
   role = aws_iam_role.github_actions_role.id
 
   policy = jsonencode({
@@ -74,7 +71,7 @@ resource "aws_iam_role_policy" "github_actions_policy" {
         ]
         Resource = "*"
         Condition = {
-          StringLike = {
+          StringEquals = {
             "aws:RequestTag/Name" = var.sg_name
           }
         }
