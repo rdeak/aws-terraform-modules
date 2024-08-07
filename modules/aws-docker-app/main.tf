@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "default" {
     effect = "Allow"
 
     principals {
-      type        = "AWS"
+      type = "AWS"
       identifiers = [
         aws_lightsail_container_service.main.private_registry_access[0].ecr_image_puller_role[0].principal_arn
       ]

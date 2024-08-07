@@ -1,5 +1,5 @@
 variable "ports" {
-  type = list(tuple([string, number]))
+  type        = list(tuple([string, number]))
   description = "A list of ports. First value is protocol and second one is port"
 }
 

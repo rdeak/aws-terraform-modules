@@ -1,5 +1,5 @@
 locals {
-  dynamodb_table_name = "${ var.bucket_name }-locks"
+  dynamodb_table_name = "${var.bucket_name}-locks"
 }
 
 

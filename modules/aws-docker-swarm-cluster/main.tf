@@ -38,7 +38,7 @@ aws ssm put-parameter --name "/docker-swarm/worker-token" --value "$(docker swar
   EOF
 
   tags = {
-    Name    = "docker_swarm_leader"
+    Name = "docker_swarm_leader"
   }
 }
 

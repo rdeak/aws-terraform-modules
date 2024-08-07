@@ -13,5 +13,5 @@ resource "aws_security_group_rule" "app_rules" {
   protocol          = each.value[0]
   security_group_id = data.aws_security_group.apps.id
   # TODO allow only ALB
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
 }

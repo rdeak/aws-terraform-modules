@@ -73,7 +73,7 @@ resource "aws_iam_policy" "docker_swarm_node_ssm" {
           "ssm:PutParameter",
           "ssm:DeleteParameter",
         ],
-        Effect = "Allow",
+        Effect   = "Allow",
         Resource = "arn:aws:ssm:*:*:parameter/docker-swarm/*"
       },
     ],

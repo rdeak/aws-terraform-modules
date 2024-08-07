@@ -10,6 +10,6 @@ provider "aws" {
 #}
 
 module "s3_backend" {
-  source            = "../../modules/aws-s3-backend"
-  bucket_name       = "my-terraform-states"
+  source      = "../../modules/aws-s3-backend"
+  bucket_name = "my-terraform-states"
 }
