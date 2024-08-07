@@ -25,7 +25,7 @@ resource "aws_iam_role" "github_actions_role" {
   name = local.repo_id
 
   assume_role_policy = jsonencode({
-    Version   = "2012-10-17"
+    Version = "2012-10-17"
     Statement = [
       {
         Effect = "Allow"
@@ -37,7 +37,7 @@ resource "aws_iam_role" "github_actions_role" {
           StringEquals = {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com"
           },
-          "StringLike": {
+          StringLike = {
             "token.actions.githubusercontent.com:sub" : "repo:${var.github_repository}:ref:refs/heads/${var.branch_name}"
           }
         }
@@ -50,7 +50,7 @@ resource "aws_iam_role_policy" "github_actions_policy" {
   role = aws_iam_role.github_actions_role.id
 
   policy = jsonencode({
-    Version   = "2012-10-17"
+    Version = "2012-10-17"
     Statement = [
       {
         Effect = "Allow"
@@ -64,6 +64,20 @@ resource "aws_iam_role_policy" "github_actions_policy" {
           "ecr:CompleteLayerUpload"
         ]
         Resource = "arn:aws:ecr:${var.aws_region}:${var.aws_account_id}:repository/${local.repo_id}"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ec2:DescribeSecurityGroups",
+          "ec2:AuthorizeSecurityGroupIngress",
+          "ec2:RevokeSecurityGroupIngress"
+        ]
+        Resource = "*"
+        Condition = {
+          StringLike = {
+            "aws:RequestTag/Name" = var.sg_name
+          }
+        }
       },
       {
         Effect = "Allow"
