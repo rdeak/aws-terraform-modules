@@ -72,7 +72,7 @@ resource "aws_iam_role_policy" "github_actions_policy" {
         Resource = "*"
         Condition = {
           StringEquals = {
-            "aws:RequestTag/Name" = var.sg_name
+            "aws:ResourceTag/Name" = var.sg_name
           }
         }
       },
