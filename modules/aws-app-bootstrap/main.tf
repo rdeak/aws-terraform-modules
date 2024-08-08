@@ -43,7 +43,7 @@ resource "aws_iam_role" "github_actions_role" {
 }
 
 resource "aws_iam_role_policy" "github_actions_policy" {
-  name = local.repo_id
+  name = "Allowed operations"
   role = aws_iam_role.github_actions_role.id
 
   policy = jsonencode({
@@ -72,7 +72,7 @@ resource "aws_iam_role_policy" "github_actions_policy" {
         Resource = "*"
         Condition = {
           StringEquals = {
-            "aws:ResourceTag/Name" = var.sg_name
+            "ec2:ResourceTag/Name" = var.sg_name
           }
         }
       },
