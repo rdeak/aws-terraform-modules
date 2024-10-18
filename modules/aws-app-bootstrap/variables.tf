@@ -18,8 +18,3 @@ variable "branch_name" {
   type        = string
   default     = "*"
 }
-
-variable "sg_name" {
-  description = "Name of security group"
-  type        = string
-}
