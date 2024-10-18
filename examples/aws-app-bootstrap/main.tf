@@ -11,9 +11,9 @@ terraform {
 
 module "bootstrap_app" {
   source            = "../../modules/aws-app-bootstrap"
-  github_repository = "rdeak/my-office"
-  aws_account_id    = "462090072481"
-  aws_region        = "eu-west-1"
+  github_repository = "user/repo"
+  aws_account_id    = "1234567890"
+  aws_region        = "us-east-1"
 }
 
 output "docker_repository_url" {
