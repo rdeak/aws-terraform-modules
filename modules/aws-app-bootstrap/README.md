@@ -18,7 +18,7 @@ No modules.
 |------|------|
 | [aws_ecr_repository.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_iam_role.github_actions_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.github_actions_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.github_actions_policy_ecr](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 
 ## Inputs
 
@@ -33,7 +33,9 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_repository_name"></a> [repository\_name](#output\_repository\_name) | n/a |
-| <a name="output_repository_url"></a> [repository\_url](#output\_repository\_url) | n/a |
-| <a name="output_role_name"></a> [role\_name](#output\_role\_name) | n/a |
-| <a name="output_role_name_arn"></a> [role\_name\_arn](#output\_role\_name\_arn) | n/a |
+| <a name="output_docker_repository_arn"></a> [docker\_repository\_arn](#output\_docker\_repository\_arn) | n/a |
+| <a name="output_docker_repository_name"></a> [docker\_repository\_name](#output\_docker\_repository\_name) | n/a |
+| <a name="output_docker_repository_url"></a> [docker\_repository\_url](#output\_docker\_repository\_url) | n/a |
+| <a name="output_github_role_arn"></a> [github\_role\_arn](#output\_github\_role\_arn) | n/a |
+| <a name="output_github_role_id"></a> [github\_role\_id](#output\_github\_role\_id) | n/a |
+| <a name="output_github_role_name"></a> [github\_role\_name](#output\_github\_role\_name) | n/a |

@@ -24,6 +24,10 @@ output "docker_repository_name" {
   value = module.bootstrap_app.docker_repository_name
 }
 
+output "docker_repository_arn" {
+  value = module.bootstrap_app.docker_repository_arn
+}
+
 output "github_role_name" {
   value = module.bootstrap_app.github_role_name
 }
