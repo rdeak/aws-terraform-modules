@@ -1,7 +1,17 @@
+variable "project_name" {
+  description = "Project name"
+  type        = string
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "VPC id"
+}
+
 variable "aws_region" {
   description = "The AWS region to deploy to"
   type        = string
-  default     = "us-east-1"
+  default     = "eu-west-1"
 }
 
 variable "lambda_function_name" {
@@ -11,12 +21,12 @@ variable "lambda_function_name" {
 
 variable "docker_repository_url" {
   description = "ECR url"
-  type = string
+  type        = string
 }
 
 variable "docker_repository_arn" {
   description = "ECR ARN"
-  type = string
+  type        = string
 }
 
 variable "lambda_image_tag" {
@@ -25,8 +35,14 @@ variable "lambda_image_tag" {
   default     = "latest"
 }
 
-variable "project_name" {
-  description = "Project name"
-  type        = string
-  default     = "my-project"
+variable "lambda_env" {
+  description = "Environment variables for lambda"
+  type        = map(string)
+  default     = {}
+}
+
+variable "log_retention" {
+  type        = number
+  description = "Number of days logs will be retained"
+  default     = 14
 }
